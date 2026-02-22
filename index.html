@@ -37,7 +37,7 @@
     </style>
   </head>
   <body>
-    <section class="max-w-screen-lg mx-auto pt-5 p-3">
+    <section  class="max-w-screen-lg mx-auto pt-5 p-3">
       <!-- title -->
       <h1 class="text-xl font-bold">Job Application Tracker</h1>
 
@@ -46,7 +46,7 @@
         <!-- button 1 -->
         <button
 
-          type="submit"
+          type="button"
           class="btn flex flex-col items-center justify-center mt-8 h-auto py-3 hover:bg-blue-200 border border-gray-200"
         >
           <span class="text-base md:text-xl font-bold">Total</span>
@@ -56,22 +56,22 @@
         <!-- button 2 -->
         <button
      
-          type="submit"
+          type="button"
           class="btn flex flex-col items-center justify-center mt-8 h-auto py-3 hover:bg-blue-200 border border-gray-200"
         >
           <span class="text-base md:text-xl font-bold">Interview</span>
-          <span id="interview-count" class="text-lg font-bold text-blue-400"
+          <span id="interview-count" class=" text-lg font-bold text-blue-400"
             >0</span
           >
         </button>
 
         <!-- button 3 -->
         <button
-          type="submit"
+          type="button"
           class="btn flex flex-col items-center justify-center md:mt-8 h-auto py-3 hover:bg-blue-200 border border-gray-200"
         >
           <span class="text-base md:text-xl font-bold">Rejected</span>
-          <span id="rejected-count" class="text-lg font-bold text-orange-400"
+          <span id="rejected-count" class=" text-lg font-bold text-orange-400"
             >0</span
           >
         </button>
@@ -83,31 +83,32 @@
       <!-- title -->
       <div class="flex justify-between">
         <h2 class="text-xl font-bold">Available Jobs</h2>
-        <p><span id="jobs-count">8</span> jobs</p>
+        <p class="text-sm"><span id="jobs-count">8</span> </p>
       </div>
 
       <!-- jobs button -->
       <div class="pt-5 max-w-sm md:w-1/3">
         <div class="grid grid-cols-3 gap-3 pt-5">
-          <button id="all-btn" type="submit" class="btn hover:bg-blue-200">
+          <button id="all-btn" type="button" class="btn hover:bg-blue-200 bg-blue-300 filter-btn">
             All
           </button>
           <button
             id="interview-btn"
-            type="submit"
-            class="btn hover:bg-blue-200"
+            type="button"
+            class="btn hover:bg-blue-200 interview-btn filter-btn"
           >
             Interview
           </button>
-          <button id="rejected-btn" type="submit" class="btn hover:bg-blue-200">
+          <button id="rejected-btn" type="button" class="btn hover:bg-blue-200 filter-btn">
             Rejected
           </button>
         </div>
       </div>
     </section>
 
-    <!-- mobile first corp -->
-    <section class="max-w-screen-lg mx-auto pt-5 p-3 space-y-12 ">
+
+    <!-- jobs container -->
+    <section id="jobs-container" class="max-w-screen-lg mx-auto pt-5 p-3 space-y-12 ">
 
       <!-- jobs 1 -->
       <div
@@ -132,7 +133,7 @@
 
         <!--  -->
         <div class="space-y-3">
-          <button  type="submit" class="applied-btn btn text-xl mt-10 hover:bg-blue-200">
+          <button  type="button" class="applied-btn btn text-xl mt-10 hover:bg-blue-200">
             Not Applied
           </button>
           <p class="text-sm">
@@ -143,12 +144,12 @@
 
         <!-- interview & rejected -->
         <div class="mt-5 space-y-3 items-center">
-          <button 
+          <button type="button"
             class="interview-btn btn hover:bg-green-200 border border-green-400 w-36 md:w-40"
           >
             Interview
           </button>
-          <button 
+          <button type="button"
             class="rejected-btn btn hover:bg-green-100 border border-red-400 w-36 md:w-40"
           >
             Rejected
@@ -181,7 +182,7 @@
 
         <!--  -->
         <div class="space-y-3">
-          <button  type="submit" class="applied-btn btn text-xl mt-10 hover:bg-blue-200">
+          <button  type="button" class="applied-btn btn text-xl mt-10 hover:bg-blue-200">
             Not Applied
           </button>
           <p class="text-sm">
@@ -191,12 +192,12 @@
 
         <!-- interview & rejected -->
         <div class="mt-5 space-y-3 items-center">
-          <button 
+          <button type="button"
             class="interview-btn btn hover:bg-green-200 border border-green-400 w-36 md:w-40"
           >
             Interview
           </button>
-          <button 
+          <button type="button"
             class="rejected-btn btn hover:bg-green-100 border border-red-400 w-36 md:w-40"
           >
             Rejected
@@ -228,7 +229,7 @@
 
         <!--  -->
         <div class="space-y-3">
-          <button  type="submit" class="applied-btn btn text-xl mt-10 hover:bg-blue-200">
+          <button  type="button" class="applied-btn btn text-xl mt-10 hover:bg-blue-200">
             Not Applied
           </button>
           <p class="text-sm">
@@ -238,12 +239,12 @@
 
         <!-- interview & rejected -->
         <div class="mt-5 space-y-3 items-center">
-          <button 
+          <button type="button"
             class="interview-btn btn hover:bg-green-200 border border-green-400 w-36 md:w-40"
           >
             Interview
           </button>
-          <button 
+          <button type="button"
             class="rejected-btn btn hover:bg-green-100 border border-red-400 w-36 md:w-40"
           >
             Rejected
@@ -275,7 +276,7 @@
 
         <!--  -->
         <div class="space-y-3">
-          <button  type="submit" class="applied-btn btn text-xl mt-10 hover:bg-blue-200">
+          <button  type="button" class="applied-btn btn text-xl mt-10 hover:bg-blue-200">
             Not Applied
           </button>
           <p class="text-sm">
@@ -285,12 +286,12 @@
 
         <!-- interview & rejected -->
         <div class="mt-5 space-y-3 items-center">
-          <button 
+          <button type="button"
             class="interview-btn btn hover:bg-green-200 border border-green-400 w-36 md:w-40"
           >
             Interview
           </button>
-          <button 
+          <button type="button"
             class="rejected-btn btn hover:bg-green-100 border border-red-400 w-36 md:w-40"
           >
             Rejected
@@ -322,7 +323,7 @@
 
         <!--  -->
         <div class="space-y-3">
-          <button  type="submit" class="applied-btn btn text-xl mt-10 hover:bg-blue-200">
+          <button  type="button" class="applied-btn btn text-xl mt-10 hover:bg-blue-200">
             Not Applied
           </button>
           <p class="text-sm">
@@ -332,12 +333,12 @@
 
         <!-- interview & rejected -->
         <div class="mt-5 space-y-3 items-center">
-          <button 
+          <button type="button"
             class="interview-btn btn hover:bg-green-200 border border-green-400 w-36 md:w-40"
           >
             Interview
           </button>
-          <button 
+          <button type="button"
             class="rejected-btn btn hover:bg-green-100 border border-red-400 w-36 md:w-40"
           >
             Rejected
@@ -364,13 +365,13 @@
           <ul class="flex gap-x-3 pt-5 text-gray-400 flex-wrap">
             <li class="text-sm">New York, NY</li>
             <li class="text-sm"> • Full-time</li>
-            <li class="text-sm text-green-400 font-medium">• $130,000 - $170,00</li>
+            <li class="text-sm text-green-400 font-medium">• $130,000 - $170,000</li>
           </ul>
         </div>
 
         <!--  -->
         <div class="space-y-3">
-          <button  type="submit" class="applied-btn btn text-xl mt-10 hover:bg-blue-200">
+          <button  type="button" class="applied-btn btn text-xl mt-10 hover:bg-blue-200">
             Not Applied
           </button>
           <p class="text-sm">
@@ -380,12 +381,12 @@
 
         <!-- interview & rejected -->
         <div class="mt-5 space-y-3 items-center">
-          <button 
+          <button type="button"
             class="interview-btn btn hover:bg-green-200 border border-green-400 w-36 md:w-40"
           >
             Interview
           </button>
-          <button 
+          <button  type="button"
             class="rejected-btn btn hover:bg-green-100 border border-red-400 w-36 md:w-40"
           >
             Rejected
@@ -411,13 +412,13 @@
           <ul class="flex gap-x-3 pt-5 text-gray-400 flex-wrap">
             <li class="text-sm">Remote</li>
             <li class="text-sm"> • Full-time </li>
-            <li class="text-sm text-green-400 font-medium">• $120,000 - $160,000/li>
+            <li class="text-sm text-green-400 font-medium">• $120,000 - $160,000</li>
           </ul>
         </div>
 
         <!--  -->
         <div class="space-y-3">
-          <button  type="submit" class="applied-btn btn text-xl mt-10 hover:bg-blue-200">
+          <button  type="button" class="applied-btn btn text-xl mt-10 hover:bg-blue-200">
             Not Applied
           </button>
           <p class="text-sm">
@@ -427,12 +428,12 @@
 
         <!-- interview & rejected -->
         <div class="mt-5 space-y-3 items-center">
-          <button 
+          <button type="button"
             class="interview-btn btn hover:bg-green-200 border border-green-400 w-36 md:w-40"
           >
             Interview
           </button>
-          <button 
+          <button type="button"
             class="rejected-btn btn hover:bg-green-100 border border-red-400 w-36 md:w-40"
           >
             Rejected
@@ -464,7 +465,7 @@
 
         <!--  -->
         <div class="space-y-3">
-          <button  type="submit" class="applied-btn btn text-xl mt-10 hover:bg-blue-200">
+          <button  type="button" class="applied-btn btn text-xl mt-10 hover:bg-blue-200">
             Not Applied
           </button>
           <p class="text-sm">
@@ -474,12 +475,12 @@
 
         <!-- interview & rejected -->
         <div class="mt-5 space-y-3 items-center">
-          <button 
+          <button type="button"
             class="interview-btn btn hover:bg-green-200 border border-green-400 w-36 md:w-40"
           >
             Interview
           </button>
-          <button 
+          <button type="button"
             class="rejected-btn btn hover:bg-green-100 border border-red-400 w-36 md:w-40"
           >
             Rejected
@@ -487,5 +488,154 @@
         </div>
       </div>
     </section>
+
+
+    <!-- no jobs  -->
+     <section id="no-jobs-section" style="display:none;">
+    <div class="flex flex-col items-center bg-gray-200 max-w-screen-lg mx-auto rounded-lg py-32 space-y-4">
+        <i class="text-5xl text-blue-400 fa-solid fa-file-circle-xmark"></i>
+        <h2 class="text-3xl font-medium">No jobs available</h2>
+        <p class="text-base">Check back soon for new job opportunities</p>
+    </div>
+</section>
+
+ 
+ <script>
+  document.addEventListener("DOMContentLoaded", function () {
+  let interviewCount = 0;
+  let rejectedCount = 0;
+
+  const interviewCountElement = document.getElementById("interview-count");
+  const rejectedCountElement = document.getElementById("rejected-count");
+  const totalElement = document.getElementById("total");
+  const jobsCountElement = document.getElementById("jobs-count");
+  const noJobsSection = document.getElementById("no-jobs-section");
+
+  const jobsContainer = document.getElementById("jobs-container");
+  const cards = Array.from(document.querySelectorAll(".mobile-content"));
+
+  // By default hide all "Not Applied" buttons
+  cards.forEach(card => {
+    const appliedBtn = card.querySelector(".applied-btn");
+    appliedBtn.style.display = "none"; // hidden by default
+  });
+
+  // Update visible jobs count
+  function updateJobsCount() {
+    const visibleCards = cards.filter(card => card.style.display !== "none");
+    const totalJobs = cards.length;
+    jobsCountElement.innerText = `${visibleCards.length} of ${totalJobs} jobs`;
+    totalElement.innerText = totalJobs; // Total button updated correctly
+
+    noJobsSection.style.display = visibleCards.length === 0 ? "block" : "none";
+  }
+
+  // Handle job card clicks (interview, rejected, delete)
+  jobsContainer.addEventListener("click", function (event) {
+    const jobCard = event.target.closest(".mobile-content");
+    if (!jobCard) return;
+
+    const appliedBtn = jobCard.querySelector(".applied-btn");
+    const previousState = jobCard.dataset.state || "not-applied";
+
+    // Interview
+    if (event.target.classList.contains("interview-btn")) {
+      if (previousState === "interview") return;
+      if (previousState === "rejected") {
+        rejectedCount--;
+        rejectedCountElement.innerText = rejectedCount;
+        appliedBtn.classList.remove("bg-red-500");
+      }
+      appliedBtn.innerText = "Interview";
+      appliedBtn.classList.add("bg-blue-300");
+      appliedBtn.classList.remove("bg-red-500");
+      appliedBtn.style.display = "inline-block"; // show Applied button
+      interviewCount++;
+      interviewCountElement.innerText = interviewCount;
+      jobCard.dataset.state = "interview";
+      jobCard.classList.add("status-interview");
+      jobCard.classList.remove("status-rejected");
+    }
+
+    // Rejected
+    if (event.target.classList.contains("rejected-btn")) {
+      if (previousState === "rejected") return;
+      if (previousState === "interview") {
+        interviewCount--;
+        interviewCountElement.innerText = interviewCount;
+        appliedBtn.classList.remove("bg-blue-300");
+      }
+      appliedBtn.innerText = "Rejected";
+      appliedBtn.classList.add("bg-red-500");
+      appliedBtn.classList.remove("bg-blue-300");
+      appliedBtn.style.display = "inline-block"; // show Applied button
+      rejectedCount++;
+      rejectedCountElement.innerText = rejectedCount;
+      jobCard.dataset.state = "rejected";
+      jobCard.classList.add("status-rejected");
+      jobCard.classList.remove("status-interview");
+    }
+
+    // Delete
+    if (event.target.classList.contains("delete-btn")) {
+      if (previousState === "interview") {
+        interviewCount--;
+        interviewCountElement.innerText = interviewCount;
+      }
+      if (previousState === "rejected") {
+        rejectedCount--;
+        rejectedCountElement.innerText = rejectedCount;
+      }
+
+      jobCard.remove();
+      const index = cards.indexOf(jobCard);
+      if (index > -1) cards.splice(index, 1);
+
+      updateJobsCount(); // Total button will decrease automatically
+    }
+
+    updateJobsCount();
+  });
+
+  // Filter buttons (unchanged)
+  const buttons = document.querySelectorAll(".filter-btn");
+  buttons.forEach(button => {
+    button.addEventListener("click", function () {
+      buttons.forEach(btn => btn.classList.remove("bg-blue-300", "bg-green-300", "bg-red-300"));
+      if (this.id === "all-btn") this.classList.add("bg-blue-300");
+      else if (this.id === "interview-btn") this.classList.add("bg-green-300");
+      else if (this.id === "rejected-btn") this.classList.add("bg-red-300");
+    });
+  });
+
+  const allBtn = document.getElementById("all-btn");
+  const interviewBtn = document.getElementById("interview-btn");
+  const rejectedBtn = document.getElementById("rejected-btn");
+
+  // Filter logic
+  allBtn.addEventListener("click", function () {
+    cards.forEach(card => card.style.display = "block");
+    updateJobsCount();
+  });
+
+  interviewBtn.addEventListener("click", function () {
+    cards.forEach(card => {
+      card.style.display = card.classList.contains("status-interview") ? "block" : "none";
+    });
+    updateJobsCount();
+  });
+
+  rejectedBtn.addEventListener("click", function () {
+    cards.forEach(card => {
+      card.style.display = card.classList.contains("status-rejected") ? "block" : "none";
+    });
+    updateJobsCount();
+  });
+
+  // Initialize counts
+  updateJobsCount();
+});
+ </script>
+
   </body>
 </html>
