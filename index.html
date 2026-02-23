@@ -21,18 +21,16 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
     />
 
-    <!-- Google Font (Poppins Example) -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
-      rel="stylesheet"
-    />
+    <!-- Google Font (geist Example) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap" rel="stylesheet">
 
     <!-- main css -->
     <style>
       body {
-        font-family: "Poppins", sans-serif;
+          font-family: "Geist", sans-serif;
+           font-optical-sizing: auto;
       }
     </style>
   </head>
@@ -42,7 +40,7 @@
   <h1 class="text-xl font-bold text-gray-800">Job Application Tracker</h1>
 
   <!-- button div -->
-  <div class="grid grid-cols-2 md:grid-cols-3 gap-3">
+  <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
     <!-- button 1 -->
     <button
       type="button"
@@ -70,30 +68,30 @@
       <span id="rejected-count" class="text-lg font-bold text-orange-500">0</span>
     </button>
   </div>
-</section>
+  </section>
 
     <!-- available section -->
-    <section class="max-w-screen-lg mx-auto pt-5 p-3">
+    <section class="max-w-screen-lg mx-auto pt-5 p-3 bg-white rounded-xl shadow-sm">
       <!-- title -->
       <div class="flex justify-between">
-        <h2 class="text-xl font-bold">Available Jobs</h2>
+        <h2 class="text-xl md:text-2xl font-bold text-gray-700">Available Jobs</h2>
         <span id="jobs-count" class="text-sm">8</span> 
       </div>
 
       <!-- jobs button -->
       <div class="pt-5 max-w-sm md:w-1/3">
         <div class="grid grid-cols-3 gap-3 pt-5">
-          <button id="all-btn" type="button" class="btn hover:bg-blue-200 bg-blue-300 filter-btn">
+          <button id="all-btn" type="button" class="btn  lg:text-lg hover:bg-blue-200 bg-blue-300 filter-btn">
             All
           </button>
           <button
             id="interview-btn"
             type="button"
-            class="btn hover:bg-blue-200 interview-btn filter-btn"
+            class="btn lg:text-lg  hover:bg-blue-200 interview-btn filter-btn"
           >
             Interview
           </button>
-          <button id="rejected-btn" type="button" class="btn hover:bg-blue-200 filter-btn">
+          <button id="rejected-btn" type="button" class="btn lg:text-lg  hover:bg-blue-200 filter-btn">
             Rejected
           </button>
         </div>
