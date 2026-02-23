@@ -1,4 +1,5 @@
-document.addEventListener("DOMContentLoaded", function () {
+ 
+  document.addEventListener("DOMContentLoaded", function () {
   let interviewCount = 0;
   let rejectedCount = 0;
 
@@ -9,8 +10,25 @@ document.addEventListener("DOMContentLoaded", function () {
   const noJobsSection = document.getElementById("no-jobs-section");
 
   const jobsContainer = document.getElementById("jobs-container");
+  const cards = Array.from(document.querySelectorAll(".mobile-content"));
 
-  // handle clicks inside job cards
+  // By default hide all "Not Applied" buttons
+  cards.forEach(card => {
+    const appliedBtn = card.querySelector(".applied-btn");
+    appliedBtn.style.display = "none"; // hidden by default
+  });
+
+  // Update visible jobs count
+  function updateJobsCount() {
+    const visibleCards = cards.filter(card => card.style.display !== "none");
+    const totalJobs = cards.length;
+    jobsCountElement.innerText = `${visibleCards.length} of ${totalJobs} jobs`;
+    totalElement.innerText = totalJobs; // Total button updated correctly
+
+    noJobsSection.style.display = visibleCards.length === 0 ? "block" : "none";
+  }
+
+  // Handle job card clicks (interview, rejected, delete)
   jobsContainer.addEventListener("click", function (event) {
     const jobCard = event.target.closest(".mobile-content");
     if (!jobCard) return;
@@ -18,7 +36,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const appliedBtn = jobCard.querySelector(".applied-btn");
     const previousState = jobCard.dataset.state || "not-applied";
 
-    // interview button
+    // Interview
     if (event.target.classList.contains("interview-btn")) {
       if (previousState === "interview") return;
       if (previousState === "rejected") {
@@ -29,6 +47,7 @@ document.addEventListener("DOMContentLoaded", function () {
       appliedBtn.innerText = "Interview";
       appliedBtn.classList.add("bg-blue-300");
       appliedBtn.classList.remove("bg-red-500");
+      appliedBtn.style.display = "inline-block"; // show Applied button
       interviewCount++;
       interviewCountElement.innerText = interviewCount;
       jobCard.dataset.state = "interview";
@@ -36,7 +55,7 @@ document.addEventListener("DOMContentLoaded", function () {
       jobCard.classList.remove("status-rejected");
     }
 
-    // rejected button
+    // Rejected
     if (event.target.classList.contains("rejected-btn")) {
       if (previousState === "rejected") return;
       if (previousState === "interview") {
@@ -47,6 +66,7 @@ document.addEventListener("DOMContentLoaded", function () {
       appliedBtn.innerText = "Rejected";
       appliedBtn.classList.add("bg-red-500");
       appliedBtn.classList.remove("bg-blue-300");
+      appliedBtn.style.display = "inline-block"; // show Applied button
       rejectedCount++;
       rejectedCountElement.innerText = rejectedCount;
       jobCard.dataset.state = "rejected";
@@ -54,7 +74,7 @@ document.addEventListener("DOMContentLoaded", function () {
       jobCard.classList.remove("status-interview");
     }
 
-    // delete button
+    // Delete
     if (event.target.classList.contains("delete-btn")) {
       if (previousState === "interview") {
         interviewCount--;
@@ -64,17 +84,22 @@ document.addEventListener("DOMContentLoaded", function () {
         rejectedCount--;
         rejectedCountElement.innerText = rejectedCount;
       }
+
       jobCard.remove();
-      updateTotalJobs();
+      const index = cards.indexOf(jobCard);
+      if (index > -1) cards.splice(index, 1);
+
+      updateJobsCount(); // Total button will decrease automatically
     }
+
+    updateJobsCount();
   });
 
-  // filter buttons
+  // Filter buttons (unchanged)
   const buttons = document.querySelectorAll(".filter-btn");
   buttons.forEach(button => {
     button.addEventListener("click", function () {
-      buttons.forEach(btn => btn.classList.remove("bg-blue-300","bg-green-300","bg-red-300"));
-
+      buttons.forEach(btn => btn.classList.remove("bg-blue-300", "bg-green-300", "bg-red-300"));
       if (this.id === "all-btn") this.classList.add("bg-blue-300");
       else if (this.id === "interview-btn") this.classList.add("bg-green-300");
       else if (this.id === "rejected-btn") this.classList.add("bg-red-300");
@@ -84,54 +109,28 @@ document.addEventListener("DOMContentLoaded", function () {
   const allBtn = document.getElementById("all-btn");
   const interviewBtn = document.getElementById("interview-btn");
   const rejectedBtn = document.getElementById("rejected-btn");
-  const cards = document.querySelectorAll(".mobile-content");
 
-  function updateTotalJobs() {
-    const totalJobs = document.querySelectorAll("#jobs-container .mobile-content").length;
-    totalElement.innerText = totalJobs;
-    jobsCountElement.innerText = totalJobs;
-
-    // show/hide no-jobs section
-    if (totalJobs === 0) noJobsSection.style.display = "block";
-    else noJobsSection.style.display = "none";
-  }
-
+  // Filter logic
   allBtn.addEventListener("click", function () {
     cards.forEach(card => card.style.display = "block");
-    updateNoJobsDisplay();
+    updateJobsCount();
   });
 
   interviewBtn.addEventListener("click", function () {
-    let visible = false;
     cards.forEach(card => {
-      if (card.classList.contains("status-interview")) {
-        card.style.display = "block";
-        visible = true;
-      } else {
-        card.style.display = "none";
-      }
+      card.style.display = card.classList.contains("status-interview") ? "block" : "none";
     });
-    noJobsSection.style.display = visible ? "none" : "block";
+    updateJobsCount();
   });
 
   rejectedBtn.addEventListener("click", function () {
-    let visible = false;
     cards.forEach(card => {
-      if (card.classList.contains("status-rejected")) {
-        card.style.display = "block";
-        visible = true;
-      } else {
-        card.style.display = "none";
-      }
+      card.style.display = card.classList.contains("status-rejected") ? "block" : "none";
     });
-    noJobsSection.style.display = visible ? "none" : "block";
+    updateJobsCount();
   });
 
-  function updateNoJobsDisplay() {
-    const anyVisible = Array.from(cards).some(card => card.style.display !== "none");
-    noJobsSection.style.display = anyVisible ? "none" : "block";
-  }
-
-  // initialize
-  updateTotalJobs();
+  // Initialize counts
+  updateJobsCount();
 });
+ 
