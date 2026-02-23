@@ -37,46 +37,40 @@
     </style>
   </head>
   <body>
-    <section  class="max-w-screen-lg mx-auto pt-5 p-3">
-      <!-- title -->
-      <h1 class="text-xl font-bold">Job Application Tracker</h1>
+    <section class="max-w-screen-lg mx-auto pt-5 p-3 bg-white rounded-xl shadow-sm">
+  <!-- title -->
+  <h1 class="text-xl font-bold text-gray-800">Job Application Tracker</h1>
 
-      <!-- button div -->
-      <div class="grid grid-cols-2 md:grid-cols-3 gap-3">
-        <!-- button 1 -->
-        <button
+  <!-- button div -->
+  <div class="grid grid-cols-2 md:grid-cols-3 gap-3">
+    <!-- button 1 -->
+    <button
+      type="button"
+      class="btn flex flex-col items-center justify-center mt-8 px-20 h-auto py-3 hover:bg-blue-200 border border-gray-200 rounded-lg transition duration-200 shadow-sm hover:shadow-md"
+    >
+      <span class="text-base md:text-xl font-bold text-gray-700">Total</span>
+      <span id="total" class="text-lg font-bold text-gray-900">8</span>
+    </button>
 
-          type="button"
-          class="btn flex flex-col items-center justify-center mt-8 h-auto py-3 hover:bg-blue-200 border border-gray-200"
-        >
-          <span class="text-base md:text-xl font-bold">Total</span>
-          <span id="total" class="text-lg font-bold">8</span>
-        </button>
+    <!-- button 2 -->
+    <button
+      type="button"
+      class="btn flex flex-col items-center justify-center mt-8 h-auto py-3 hover:bg-blue-200 border border-gray-200 rounded-lg transition duration-200 shadow-sm hover:shadow-md"
+    >
+      <span class="text-base md:text-xl font-bold text-gray-700">Interview</span>
+      <span id="interview-count" class="text-lg font-bold text-blue-500">0</span>
+    </button>
 
-        <!-- button 2 -->
-        <button
-     
-          type="button"
-          class="btn flex flex-col items-center justify-center mt-8 h-auto py-3 hover:bg-blue-200 border border-gray-200"
-        >
-          <span class="text-base md:text-xl font-bold">Interview</span>
-          <span id="interview-count" class=" text-lg font-bold text-blue-400"
-            >0</span
-          >
-        </button>
-
-        <!-- button 3 -->
-        <button
-          type="button"
-          class="btn flex flex-col items-center justify-center md:mt-8 h-auto py-3 hover:bg-blue-200 border border-gray-200"
-        >
-          <span class="text-base md:text-xl font-bold">Rejected</span>
-          <span id="rejected-count" class=" text-lg font-bold text-orange-400"
-            >0</span
-          >
-        </button>
-      </div>
-    </section>
+    <!-- button 3 -->
+    <button
+      type="button"
+      class="btn flex flex-col items-center justify-center md:mt-8 h-auto py-3 hover:bg-blue-200 border border-gray-200 rounded-lg transition duration-200 shadow-sm hover:shadow-md"
+    >
+      <span class="text-base md:text-xl font-bold text-gray-700">Rejected</span>
+      <span id="rejected-count" class="text-lg font-bold text-orange-500">0</span>
+    </button>
+  </div>
+</section>
 
     <!-- available section -->
     <section class="max-w-screen-lg mx-auto pt-5 p-3">
