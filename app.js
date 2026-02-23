@@ -1,5 +1,5 @@
- 
-  document.addEventListener("DOMContentLoaded", function () {
+ document.addEventListener("DOMContentLoaded", function () {
+
   let interviewCount = 0;
   let rejectedCount = 0;
 
@@ -12,24 +12,51 @@
   const jobsContainer = document.getElementById("jobs-container");
   const cards = Array.from(document.querySelectorAll(".mobile-content"));
 
-  // By default hide all "Not Applied" buttons
+  const allBtn = document.getElementById("all-btn");
+  const interviewBtn = document.getElementById("interview-btn");
+  const rejectedBtn = document.getElementById("rejected-btn");
+
+  // Hide Not Applied button by default
   cards.forEach(card => {
     const appliedBtn = card.querySelector(".applied-btn");
-    appliedBtn.style.display = "none"; // hidden by default
+    if (appliedBtn) appliedBtn.style.display = "none";
   });
 
-  // Update visible jobs count
+  // Active tab
+  let activeTab = "all";
+
+  function applyFilter() {
+    cards.forEach(card => {
+      if (activeTab === "all") {
+        card.style.display = "block";
+      }
+      else if (activeTab === "interview") {
+        card.style.display = card.classList.contains("status-interview") ? "block" : "none";
+      }
+      else if (activeTab === "rejected") {
+        card.style.display = card.classList.contains("status-rejected") ? "block" : "none";
+      }
+    });
+  }
+
   function updateJobsCount() {
     const visibleCards = cards.filter(card => card.style.display !== "none");
     const totalJobs = cards.length;
+
     jobsCountElement.innerText = `${visibleCards.length} of ${totalJobs} jobs`;
-    totalElement.innerText = totalJobs; // Total button updated correctly
+    totalElement.innerText = totalJobs;
 
     noJobsSection.style.display = visibleCards.length === 0 ? "block" : "none";
   }
 
-  // Handle job card clicks (interview, rejected, delete)
+  function updateUI() {
+    applyFilter();
+    updateJobsCount();
+  }
+
+  // Job card click events
   jobsContainer.addEventListener("click", function (event) {
+
     const jobCard = event.target.closest(".mobile-content");
     if (!jobCard) return;
 
@@ -38,99 +65,108 @@
 
     // Interview
     if (event.target.classList.contains("interview-btn")) {
+
       if (previousState === "interview") return;
+
       if (previousState === "rejected") {
         rejectedCount--;
         rejectedCountElement.innerText = rejectedCount;
-        appliedBtn.classList.remove("bg-red-500");
       }
+
       appliedBtn.innerText = "Interview";
       appliedBtn.classList.add("bg-blue-300");
       appliedBtn.classList.remove("bg-red-500");
-      appliedBtn.style.display = "inline-block"; // show Applied button
+      appliedBtn.style.display = "inline-block";
+
       interviewCount++;
       interviewCountElement.innerText = interviewCount;
+
       jobCard.dataset.state = "interview";
       jobCard.classList.add("status-interview");
       jobCard.classList.remove("status-rejected");
+
+      updateUI();
     }
 
     // Rejected
     if (event.target.classList.contains("rejected-btn")) {
+
       if (previousState === "rejected") return;
+
       if (previousState === "interview") {
         interviewCount--;
         interviewCountElement.innerText = interviewCount;
-        appliedBtn.classList.remove("bg-blue-300");
       }
+
       appliedBtn.innerText = "Rejected";
       appliedBtn.classList.add("bg-red-500");
       appliedBtn.classList.remove("bg-blue-300");
-      appliedBtn.style.display = "inline-block"; // show Applied button
+      appliedBtn.style.display = "inline-block";
+
       rejectedCount++;
       rejectedCountElement.innerText = rejectedCount;
+
       jobCard.dataset.state = "rejected";
       jobCard.classList.add("status-rejected");
       jobCard.classList.remove("status-interview");
+
+      updateUI();
     }
 
     // Delete
     if (event.target.classList.contains("delete-btn")) {
+
       if (previousState === "interview") {
         interviewCount--;
         interviewCountElement.innerText = interviewCount;
       }
+
       if (previousState === "rejected") {
         rejectedCount--;
         rejectedCountElement.innerText = rejectedCount;
       }
 
       jobCard.remove();
+
       const index = cards.indexOf(jobCard);
       if (index > -1) cards.splice(index, 1);
 
-      updateJobsCount(); // Total button will decrease automatically
+      updateUI();
     }
 
-    updateJobsCount();
   });
 
-  // Filter buttons (unchanged)
+  // Filter buttons color
   const buttons = document.querySelectorAll(".filter-btn");
   buttons.forEach(button => {
     button.addEventListener("click", function () {
-      buttons.forEach(btn => btn.classList.remove("bg-blue-300", "bg-green-300", "bg-red-300"));
+      buttons.forEach(btn =>
+        btn.classList.remove("bg-blue-300", "bg-green-300", "bg-red-300")
+      );
+
       if (this.id === "all-btn") this.classList.add("bg-blue-300");
-      else if (this.id === "interview-btn") this.classList.add("bg-green-300");
-      else if (this.id === "rejected-btn") this.classList.add("bg-red-300");
+      if (this.id === "interview-btn") this.classList.add("bg-green-300");
+      if (this.id === "rejected-btn") this.classList.add("bg-red-300");
     });
   });
 
-  const allBtn = document.getElementById("all-btn");
-  const interviewBtn = document.getElementById("interview-btn");
-  const rejectedBtn = document.getElementById("rejected-btn");
-
-  // Filter logic
+  // Filter actions
   allBtn.addEventListener("click", function () {
-    cards.forEach(card => card.style.display = "block");
-    updateJobsCount();
+    activeTab = "all";
+    updateUI();
   });
 
   interviewBtn.addEventListener("click", function () {
-    cards.forEach(card => {
-      card.style.display = card.classList.contains("status-interview") ? "block" : "none";
-    });
-    updateJobsCount();
+    activeTab = "interview";
+    updateUI();
   });
 
   rejectedBtn.addEventListener("click", function () {
-    cards.forEach(card => {
-      card.style.display = card.classList.contains("status-rejected") ? "block" : "none";
-    });
-    updateJobsCount();
+    activeTab = "rejected";
+    updateUI();
   });
 
-  // Initialize counts
-  updateJobsCount();
+  // Initial load
+  updateUI();
+
 });
- 
